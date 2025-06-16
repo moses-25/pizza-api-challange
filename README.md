@@ -42,3 +42,89 @@ The API will be available at http://localhost:5555/.
 - Python 3
 - pipenv (install with `pip install pipenv`)
 
+### Dependencies
+Install all the dependencies:
+
+pipenv install
+pipenv shell
+
+### Database Setup
+Initialize the database:
+export FLASK_APP=server/app.py
+flask db init
+
+### Run migrations
+flask db migrate -m "Initial migration"
+flask db upgrade
+
+### Seed the database with sample data
+python server/seed.py
+
+### Running the Server
+python server/app.py
+
+The API will be available at http://localhost:5555
+
+### 🌐 API Endpoints
+Endpoint: GET /restaurants
+Response:
+
+json
+[
+  {
+    "id": 1,
+    "name": "Pizza Palace",
+    "address": "123 Main St"
+  },
+  {
+    "id": 2,
+    "name": "Mario's Pizza",
+    "address": "456 Oak Ave"
+  }
+]
+
+Endpoint: GET /restaurants/<int:id>
+
+Success Response:
+
+json
+{
+  "id": 1,
+  "name": "Pizza Palace",
+  "address": "123 Main St",
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "Margherita",
+      "ingredients": "Tomato sauce, mozzarella, basil",
+      "price": 10
+    }
+  ]
+}
+
+Error Response (404):
+
+json
+{
+  "error": "Restaurant not found"
+}
+
+🏗 Project Structure
+.
+├── server/
+│   ├── __init__.py
+│   ├── app.py                # App setup
+│   ├── config.py             # DB configuration
+│   ├── models/               # Database models
+│   │   ├── __init__.py
+│   │   ├── restaurant.py
+│   │   ├── pizza.py
+│   │   └── restaurant_pizza.py
+│   ├── controllers/           # Route handlers
+│   │   ├── __init__.py
+│   │   ├── restaurant_controller.py
+│   │   ├── pizza_controller.py
+│   │   └── restaurant_pizza_controller.py
+│   ├── seed.py               # Database seeder
+├── migrations/               # Database migration files
+└── README.md
