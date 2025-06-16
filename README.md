@@ -66,50 +66,21 @@ python server/app.py
 The API will be available at http://localhost:5555
 
 ### 🌐 API Endpoints
+Get All Restaurants
 Endpoint: GET /restaurants
-Response:
 
-json
-[
-  {
-    "id": 1,
-    "name": "Pizza Palace",
-    "address": "123 Main St"
-  },
-  {
-    "id": 2,
-    "name": "Mario's Pizza",
-    "address": "456 Oak Ave"
-  }
-]
-
+Get Single Restaurant
 Endpoint: GET /restaurants/<int:id>
 
-Success Response:
+Delete Restaurant
+Endpoint: DELETE /restaurants/<int:id>
 
-json
-{
-  "id": 1,
-  "name": "Pizza Palace",
-  "address": "123 Main St",
-  "pizzas": [
-    {
-      "id": 1,
-      "name": "Margherita",
-      "ingredients": "Tomato sauce, mozzarella, basil",
-      "price": 10
-    }
-  ]
-}
+Get All Pizzas
+Endpoint: GET /pizzas
 
-Error Response (404):
-
-json
-{
-  "error": "Restaurant not found"
-}
-
-🏗 Project Structure
+Create Restaurant Pizza
+Endpoint: POST /restaurant_pizzas
+### 🏗 Project Structure
 .
 ├── server/
 │   ├── __init__.py
